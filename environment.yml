@@ -1,0 +1,14 @@
+name: sphinxjinjaenv
+channels:
+- conda-forge
+dependencies:
+- python
+- pip
+- pbr
+- mypy
+- sphinx
+- docutils
+- jinja2
+- sphinx-testing
+- pip:
+  - docutils-stubs

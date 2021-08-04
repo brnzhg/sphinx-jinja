@@ -181,7 +181,7 @@ htmlhelp_basename = 'testdoc'
 
 # -- Options for LaTeX output ---------------------------------------------
 
-latex_elements = {
+latex_elements = { #type: ignore
     # The paper size ('letterpaper' or 'a4paper').
     #'papersize': 'letterpaper',
 
@@ -265,6 +265,12 @@ jinja_contexts = {
         'skipped_string',
         ['a', 'b'],
     ]},
+    'fourth_ctx': { 'fourth_ctx_key': 
+        {'objects': [
+            [1, 2, 3, 4],
+            'skipped_string',
+            ['a', 'b'],
+        ]}},
 }
 
 jinja_env_kwargs = {

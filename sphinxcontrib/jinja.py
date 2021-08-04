@@ -9,15 +9,15 @@ from docutils.statemachine import StringList
 from jinja2 import FileSystemLoader, Environment
 import sphinx.util
 
-try:
-    from urllib.request import url2pathname
-except ImportError:
-    from urllib import url2pathname
+#try:
+from urllib.request import url2pathname
+#except ImportError:
+#    from urllib import url2pathname
 
 
 class JinjaDirective(Directive):
     has_content = True
-    optional_arguments = 1
+    optional_arguments = 2
     option_spec = {
         "file": directives.path,
         "header_char": directives.unchanged,
@@ -32,8 +32,17 @@ class JinjaDirective(Directive):
         conf = self.app.config
         template_filename = self.options.get("file")
         debug_template = self.options.get("debug")
-        cxt = (conf.jinja_contexts[self.arguments[0]].copy()
-               if self.arguments else {})
+
+        if self.arguments:
+            cxt_to_copy = conf.jinja_contexts
+            for arg in self.arguments:
+                cxt_to_copy = cxt_to_copy[arg]
+            cxt = cxt_to_copy.copy()
+        else:
+            cxt = {}
+
+        #cxt = (conf.jinja_contexts[self.arguments[0]].copy()
+        #       if self.arguments else {})
         cxt["options"] = {
             "header_char": self.options.get("header_char"),
         }
