@@ -257,6 +257,7 @@ texinfo_documents = [
 # If true, do not generate a @detailmenu in the "Top" node's menu.
 #texinfo_no_detailmenu = False
 
+
 jinja_contexts = {
     'first_ctx': {'topics': {'a': 'b', 'c': 'd'}},
     'second_ctx': {'topics': {'a': 'b', 'c': 'd'}},
@@ -269,9 +270,10 @@ jinja_contexts = {
         {'objects': [
             [1, 2, 3, 4],
             'skipped_string',
-            ['a', 'b'],
-        ]}},
+            ['a', 'b']],
+        }},
 }
+
 
 jinja_env_kwargs = {
     'lstrip_blocks': True,
